@@ -4,78 +4,78 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [{
-        path: '/login',
-        name: 'Login',
+    path: '/login',
+    name: 'Login',
+    component: () =>
+        import('../components/Login.vue')
+},
+{
+    path: '/home',
+    name: 'Home',
+    redirect: '/welcome',
+    component: () =>
+        import('../views/Home'),
+    children: [{
+        path: '/welcome',
         component: () =>
-            import ('../components/Login.vue')
+            import('../components/Welcome')
     },
     {
-        path: '/home',
-        name: 'Home',
-        redirect: '/welcome',
+        path: '/users',
         component: () =>
-            import ('../views/Home'),
-        children: [{
-                path: '/welcome',
-                component: () =>
-                    import ('../components/Welcome')
-            },
-            {
-                path: '/users',
-                component: () =>
-                    import ('../components/users/Users')
-            },
-            {
-                path: '/rights',
-                component: () =>
-                    import ('../components/power/Rights')
-            },
-            {
-                path: '/roles',
-                component: () =>
-                    import ('../components/power/Roles')
-            },
-            {
-                path: '/categories',
-                component: () =>
-                    import ('../components/goods/Cate.vue')
-            },
-            {
-                path: '/params',
-                component: () =>
-                    import ('../components/goods/Params.vue')
-            },
-            {
-                path: '/goods',
-                component: () =>
-                    import ('../components/goods/List.vue')
-            },
-            {
-                path: '/goods/add',
-                component: () =>
-                    import ('../components/goods/Add.vue')
-            },
-            {
-                path: '/orders',
-                component: () =>
-                    import ('../components/order/Order.vue')
-            },
-            {
-                path: '/reports',
-                component: () =>
-                    import ('../components/report/Report.vue')
-            }
-        ],
+            import('../components/users/Users')
     },
     {
-        path: '/about',
-        name: 'About',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
+        path: '/rights',
         component: () =>
-            import ('../views/About.vue')
+            import('../components/power/Rights')
+    },
+    {
+        path: '/roles',
+        component: () =>
+            import('../components/power/Roles')
+    },
+    {
+        path: '/categories',
+        component: () =>
+            import('../components/goods/Cate.vue')
+    },
+    {
+        path: '/params',
+        component: () =>
+            import('../components/goods/Params.vue')
+    },
+    {
+        path: '/goods',
+        component: () =>
+            import('../components/goods/List.vue')
+    },
+    {
+        path: '/goods/add',
+        component: () =>
+            import('../components/goods/Add.vue')
+    },
+    {
+        path: '/orders',
+        component: () =>
+            import('../components/order/Order.vue')
+    },
+    {
+        path: '/reports',
+        component: () =>
+            import('../components/report/Report.vue')
     }
+    ],
+},
+{
+    path: '/about',
+    name: 'About',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+        import('../views/About.vue')
+}
 ]
 
 const router = new VueRouter({
